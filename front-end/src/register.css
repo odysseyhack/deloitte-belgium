@@ -1,0 +1,59 @@
+.register__title {
+  display: flex;
+  margin: 0 auto 16px auto;
+	height: 22px;
+	width: 282px;
+	color: #00526E;
+	font-size: 16px;
+	letter-spacing: 0.4px;
+	line-height: 23px;
+	text-align: center;
+}
+
+.register__subtitle {
+  display: flex;
+  margin: 0 auto;
+	height: 22px;
+	width: 252px;
+	color: #03243A;
+	font-size: 16px;
+	letter-spacing: 0.4px;
+	line-height: 23px;
+	text-align: center;
+}
+
+.register__header {
+  margin: 64px 0;
+  text-align: center;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  margin: 48px 0 64px 0;
+}
+
+.field-option {
+  font-size: 16px;
+	height: 35px;
+  width: 302px;
+  margin: 16px 0;
+  border-width: 0 0 2px 0;
+  border-color: '#000000';
+  outline: none;
+}
+
+.register__footer {
+  margin: 0;
+	height: 22px;
+	width: 179px;
+	color: #03243A;
+	font-size: 16px;
+	letter-spacing: 0.4px;
+	line-height: 23px;
+}
+
+.register__footer--login {
+  font-weight: bold;
+  color: '#FB991E';
+}

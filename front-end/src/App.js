@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import LaunchScreen from './LaunchScreen'
-import Register from './LaunchScreen'
+import Register from './register'
 
 class App extends Component {
   router() {

@@ -8,15 +8,13 @@ class LaunchScreen extends Component {
       <div className="App">
         <header className="App-header">
           <p className="launchScreen__title">
-            <span class="register">register</span><br /><span className="van-koophandel">van koophandel</span>
+            <span className="register">register</span><br /><span className="van-koophandel">van koophandel</span>
           </p>
         </header>
         <img src={logo} className="App-logo" alt="logo" />
         <a
           className="launchScreen__button"
           href="/"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <span className="launchScreen__button--text">
             Registreer voor certificaat
@@ -24,9 +22,7 @@ class LaunchScreen extends Component {
         </a>
         <a
           className="launchScreen__button"
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/login"
         >
           <span className="launchScreen__button--text">
             Login

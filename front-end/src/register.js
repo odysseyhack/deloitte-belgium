@@ -1,16 +1,36 @@
 import React, { Component } from 'react'
-import './Register.css'
+import './register.css'
 
 class LaunchScreen extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <p className="launchScreen__title">
-            <span class="register">register</span><br /><span className="van-koophandel">van koophandel</span>
+          <p className="register__title">
+            <span class="register">stap 1</span>
+          </p>
+          <p className="register__subtitle">
+            <span class="">vul hier uw bedrijfsinformatie in</span>
           </p>
         </header>
-        <img src={logo} className="App-logo" alt="logo" />
+        <form className="register__form">
+          <input
+            className="field-option"
+            placeholder="Naam"
+          />
+          <input
+            className="field-option"
+            placeholder="Rechtsvorm"
+          />
+          <input
+            className="field-option"
+            placeholder="Vestiging"
+          />
+          <input
+            className="field-option"
+            placeholder="Datum van oprichting"
+          />
+        </form>
         <a
           className="launchScreen__button"
           href="/register"
@@ -18,19 +38,12 @@ class LaunchScreen extends Component {
           rel="noopener noreferrer"
         >
           <span className="launchScreen__button--text">
-            Registreer voor certificaat
+            volgende
         </span>
         </a>
-        <a
-          className="launchScreen__button"
-          href="/login"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="launchScreen__button--text">
-            Login
-        </span>
-        </a>
+        <p className="register__footer">
+          al geregistreerd? <a href="/login" className="register__footer--login">login</a>
+        </p>
       </div>
     )
   }
