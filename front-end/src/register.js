@@ -7,10 +7,10 @@ class LaunchScreen extends Component {
       <div className="App">
         <header className="App-header">
           <p className="register__title">
-            <span class="register">stap 1</span>
+            <span className="register">stap 1</span>
           </p>
           <p className="register__subtitle">
-            <span class="">vul hier uw bedrijfsinformatie in</span>
+            <span className="">vul hier uw bedrijfsinformatie in</span>
           </p>
         </header>
         <form className="register__form">

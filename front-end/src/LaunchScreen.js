@@ -14,7 +14,7 @@ class LaunchScreen extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <a
           className="launchScreen__button"
-          href="/"
+          href="/register"
         >
           <span className="launchScreen__button--text">
             Registreer voor certificaat
