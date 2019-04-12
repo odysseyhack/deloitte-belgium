@@ -38,11 +38,10 @@ public class BlockChainController {
 
     private final String DEFAULT_ADDRESS = "http://127.0.0.1:7545";
 
-//    private final Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
+    private final Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
 
     @GetMapping("/getCurrentBlock")
     public ResponseEntity<EthBlockNumber> getCurrentBlock() throws ResourceNotFoundException {
-        Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
         EthBlockNumber result;
         try {
             result = web3j.ethBlockNumber()
@@ -56,7 +55,6 @@ public class BlockChainController {
 
     @GetMapping("/getAccounts")
     public ResponseEntity<List<String>> getAccounts() {
-        Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
         List<String> accounts = new ArrayList<>();
 
         return ResponseEntity.ok().body(accounts);
@@ -64,7 +62,6 @@ public class BlockChainController {
 
     @GetMapping("/getBalanceByAddress/{address}")
     public ResponseEntity<EthGetBalance> getBalanceByAddress(@PathVariable(value = "address") String address) throws ResourceNotFoundException {
-        Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
         EthGetBalance result;
         try {
             result = web3j.ethGetBalance(address,
@@ -83,7 +80,6 @@ public class BlockChainController {
                                                 @PathVariable(value = "targetAddress") String targetAddress,
                                                 @PathVariable(value = "amount") Long amount) throws CipherException, IOException {
         Credentials cred = this.userService.getCredentials(password, userId);
-        Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
         try {
             TransactionReceipt transactionReceipt = Transfer.sendFunds(web3j, cred, targetAddress, BigDecimal.valueOf(amount), Convert.Unit.ETHER).send();
             System.out.println(transactionReceipt);
@@ -95,7 +91,6 @@ public class BlockChainController {
     @GetMapping("/deployHelloWorldContract/{password}/{userId}")
     public ResponseEntity<String> transferEther(@PathVariable(value = "password") String password,
                                                 @PathVariable(value = "userId") Long userId) throws Exception {
-        Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
         Credentials cred = this.userService.getCredentials(password, userId);
         HelloWorld contract = HelloWorld.deploy(web3j, cred, ManagedTransaction.GAS_PRICE, Contract.GAS_LIMIT).send();
         return ResponseEntity.ok().body("The contract address is: " +contract.getContractAddress());
