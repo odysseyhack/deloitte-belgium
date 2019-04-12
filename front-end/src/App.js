@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import LaunchScreen from './LaunchScreen'
 import Register from './register'
+import Login from './login'
 
 class App extends Component {
   router() {
@@ -10,8 +10,7 @@ class App extends Component {
       case '/register':
         return <Register />
       case '/login':
-        break
-      // return <Login />
+        return <Login />
       case '/':
         return <LaunchScreen />
       default:

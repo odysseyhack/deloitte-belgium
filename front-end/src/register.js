@@ -34,8 +34,6 @@ class LaunchScreen extends Component {
         <a
           className="launchScreen__button"
           href="/register"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <span className="launchScreen__button--text">
             volgende

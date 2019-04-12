@@ -1,4 +1,4 @@
-.register__step {
+.register__step, .login__title--text {
 	height: 22px;
 	width: 282px;
 	color: #00526E;
@@ -10,7 +10,7 @@
   font-weight: bold;
 }
 
-.register__title {
+.register__title, login__title {
   display: flex;
   margin: 0 auto 8px auto;
 	height: 22px;

@@ -13,6 +13,9 @@
   width: 302px;
   border-radius: 24px;
   background-color: #FB991E;
+
+  outline: none;
+  cursor: pointer;
 }
 
 .launchScreen__button--text {
