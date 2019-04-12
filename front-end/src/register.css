@@ -1,6 +1,18 @@
+.register__step {
+	height: 22px;
+	width: 282px;
+	color: #00526E;
+	font-size: 16px;
+	letter-spacing: 0.4px;
+	line-height: 23px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .register__title {
   display: flex;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 8px auto;
 	height: 22px;
 	width: 282px;
 	color: #00526E;
