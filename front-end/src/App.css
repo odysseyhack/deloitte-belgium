@@ -1,0 +1,43 @@
+a {
+  text-decoration: none;
+}
+
+.App {
+  background-color: #ffffff;
+  color: #000000;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-logo {
+  animation: zoom infinite 1s ease-in-out;
+  width: 240px;
+  height: 278.68px;
+  margin: 32px 0;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoom {
+  0%, 100% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}

@@ -1,0 +1,48 @@
+
+.launchScreen__title {
+  margin: 32px 0;
+}
+
+.launchScreen__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+
+  height: 48px;
+  width: 302px;
+  border-radius: 24px;
+  background-color: #FB991E;
+}
+
+.launchScreen__button--text {
+  height: 25px;
+  color: #FFFFFF;
+  font-size: 18px;
+  letter-spacing: 0.45px;
+  line-height: 26px;
+  text-align: center;
+}
+
+.register {
+  text-transform: uppercase;
+  font-weight: bold;
+
+	height: 38px;
+	width: 282px;
+	color: #00526E;
+	font-size: 28px;
+	letter-spacing: 0.7px;
+	line-height: 39px;
+	text-align: center;
+}
+
+.van-koophandel {
+	height: 23px;
+	width: 130px;
+	color: #00526E;
+	font-size: 17px;
+	letter-spacing: 0.42px;
+	line-height: 24px;
+	text-align: center;
+}
