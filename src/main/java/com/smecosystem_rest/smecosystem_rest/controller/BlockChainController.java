@@ -2,6 +2,7 @@ package com.smecosystem_rest.smecosystem_rest.controller;
 
 
 import com.smecosystem_rest.smecosystem_rest.exception.ResourceNotFoundException;
+import com.smecosystem_rest.smecosystem_rest.model.smartcontracts.DefaultContractGasProvider;
 import com.smecosystem_rest.smecosystem_rest.model.smartcontracts.HelloWorld;
 import com.smecosystem_rest.smecosystem_rest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +83,6 @@ public class BlockChainController {
         Credentials cred = this.userService.getCredentials(password, userId);
         try {
             TransactionReceipt transactionReceipt = Transfer.sendFunds(web3j, cred, targetAddress, BigDecimal.valueOf(amount), Convert.Unit.ETHER).send();
-            System.out.println(transactionReceipt);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class BlockChainController {
     public ResponseEntity<String> transferEther(@PathVariable(value = "password") String password,
                                                 @PathVariable(value = "userId") Long userId) throws Exception {
         Credentials cred = this.userService.getCredentials(password, userId);
-        HelloWorld contract = HelloWorld.deploy(web3j, cred, ManagedTransaction.GAS_PRICE, Contract.GAS_LIMIT).send();
+        HelloWorld contract = HelloWorld.deploy(web3j, cred, new DefaultContractGasProvider()).send();
         return ResponseEntity.ok().body("The contract address is: " +contract.getContractAddress());
     }
 }
