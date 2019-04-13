@@ -4,6 +4,7 @@ package com.smecosystem_rest.smecosystem_rest.controller;
 import com.smecosystem_rest.smecosystem_rest.exception.ResourceNotFoundException;
 import com.smecosystem_rest.smecosystem_rest.model.smartcontracts.DefaultContractGasProvider;
 import com.smecosystem_rest.smecosystem_rest.model.smartcontracts.HelloWorld;
+import com.smecosystem_rest.smecosystem_rest.model.smartcontracts.MultiSig23;
 import com.smecosystem_rest.smecosystem_rest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +46,7 @@ public class BlockChainController {
     public ResponseEntity<EthBlockNumber> getCurrentBlock() throws ResourceNotFoundException {
         EthBlockNumber result;
         try {
-            result = web3j.ethBlockNumber()
+            result = this.web3j.ethBlockNumber()
                     .sendAsync()
                     .get();
             return ResponseEntity.ok().body(result);
@@ -55,10 +56,9 @@ public class BlockChainController {
     }
 
     @GetMapping("/getAccounts")
-    public ResponseEntity<List<String>> getAccounts() {
-        List<String> accounts = new ArrayList<>();
-
-        return ResponseEntity.ok().body(accounts);
+    public ResponseEntity<List<String>> getAccounts() throws IOException {
+        List<String> accountList = this.web3j.ethAccounts().send().getAccounts();
+        return ResponseEntity.ok().body(accountList);
     }
 
     @GetMapping("/getBalanceByAddress/{address}")
@@ -89,10 +89,19 @@ public class BlockChainController {
     }
 
     @GetMapping("/deployHelloWorldContract/{password}/{userId}")
-    public ResponseEntity<String> transferEther(@PathVariable(value = "password") String password,
+    public ResponseEntity<String> deployHelloWorldContract(@PathVariable(value = "password") String password,
                                                 @PathVariable(value = "userId") Long userId) throws Exception {
         Credentials cred = this.userService.getCredentials(password, userId);
         HelloWorld contract = HelloWorld.deploy(web3j, cred, new DefaultContractGasProvider()).send();
+        return ResponseEntity.ok().body("The contract address is: " +contract.getContractAddress());
+    }
+
+
+    @GetMapping("/deployMultiSigContract/{password}/{userId}")
+    public ResponseEntity<String> deployMultiSigContract(@PathVariable(value = "password") String password,
+                                                @PathVariable(value = "userId") Long userId) throws Exception {
+        Credentials cred = this.userService.getCredentials(password, userId);
+        MultiSig23 contract = MultiSig23.deploy(web3j, cred, new DefaultContractGasProvider(),"0x2499316Ba3F9fbB9f52EdeEbF4eD998f625Fa44a","0xdFEC90a1C280dEcc45FEAF1994cff6E0d4F8772e","0x7190e7eCBdeA76CEA608C616E21cbEEbc71A7C6a").send();
         return ResponseEntity.ok().body("The contract address is: " +contract.getContractAddress());
     }
 }

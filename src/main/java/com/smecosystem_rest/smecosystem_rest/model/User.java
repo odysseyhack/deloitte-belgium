@@ -29,6 +29,7 @@ public class User {
     private String lastName;
     private String emailAddress;
     private String walletAddress;
+    private String password;
 
     private Date createdAt;
     private String createdBy;
@@ -115,5 +116,14 @@ public class User {
 
     public void setWalletAddress(String walletAddress) {
         this.walletAddress = walletAddress;
+    }
+
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
