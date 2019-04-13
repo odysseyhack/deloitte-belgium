@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './register.css'
+import { localized } from './l10n';
 
 class LaunchScreen extends Component {
   render() {
@@ -7,28 +8,28 @@ class LaunchScreen extends Component {
       <div className="App">
         <header className="App-header">
           <p className="register__title">
-            <span className="register__step">stap 1</span>
+            <span className="register__step">{localized('step1')}</span>
           </p>
           <p className="register__subtitle">
-            <span className="">vul hier uw bedrijfsinformatie in</span>
+            <span className="">{localized('enterBusinessInformation')}</span>
           </p>
         </header>
         <form className="register__form">
           <input
             className="field-option"
-            placeholder="Naam"
+            placeholder={localized('name')}
           />
           <input
             className="field-option"
-            placeholder="Rechtsvorm"
+            placeholder={localized('legalForm')}
           />
           <input
             className="field-option"
-            placeholder="Vestiging"
+            placeholder={localized('establishment')}
           />
           <input
             className="field-option"
-            placeholder="Datum van oprichting"
+            placeholder={localized('creationDate')}
           />
         </form>
         <a
@@ -36,11 +37,11 @@ class LaunchScreen extends Component {
           href="/register"
         >
           <span className="launchScreen__button--text">
-            volgende
-        </span>
+            {localized('next')}
+          </span>
         </a>
         <p className="register__footer">
-          al geregistreerd? <a href="/login" className="register__footer--login">login</a>
+          {localized('alreadyRegistered')} <a href="/login" className="register__footer--login">{localized('signIn')}</a>
         </p>
       </div>
     )
