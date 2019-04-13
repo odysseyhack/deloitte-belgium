@@ -179,17 +179,13 @@ contract CompanyName {
 
     // Send funds as purchase
 
-    function makePurchasePayment(address payable receiverAddress, uint paymentAmount) public checkSpendingLimit(paymentAmount){
-        require(listContract.isAuthorizedForPurchases(msg.sender) == true, "You are not authorized for sales transactions.");
-        require(address(this).balance> paymentAmount, "The company does not own enough funds.");
+    function makePurchasePayment(address payable receiverAddress, uint paymentAmount) public {
         receiverAddress.transfer(paymentAmount);
     }
 
     // Send funds as sales
 
-    function makeSalesPayment(address payable receiverAddress, uint paymentAmount) public checkSpendingLimit(paymentAmount){
-        require(listContract.isAuthorizedForSales(msg.sender) == true, "You are not authorized for sales transactions.");
-        require(address(this).balance> paymentAmount, "The company does not own enough funds.");
+    function makeSalesPayment(address payable receiverAddress, uint paymentAmount) public {
         receiverAddress.transfer(paymentAmount);
     }
 
