@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import './login.css'
+import web from './web'
 
 class Login extends Component {
   login() {
     const inputs = document.querySelectorAll('.field-option')
-    const login = inputs[0].value
+    const name = inputs[0].value
     const password = inputs[1].value
+
+    web.login({ name, password })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
