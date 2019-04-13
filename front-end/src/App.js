@@ -6,6 +6,7 @@ import Login from './login'
 import CameraScreen from './cameraScreen'
 import Contract from './contract'
 import Profile from './profile'
+import Permission from './permission'
 
 class App extends Component {
   componentDidMount() {
@@ -25,6 +26,8 @@ class App extends Component {
         return <Contract />
       case '/profile':
         return <Profile />
+      case '/permission':
+        return <Permission />
       default:
         break
       // return <Error />

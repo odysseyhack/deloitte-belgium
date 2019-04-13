@@ -1,4 +1,4 @@
-.profile__image {
+.profile__image, .permission__image {
 	height: 128px;
 	width: 90px;
 }

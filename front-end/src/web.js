@@ -7,7 +7,7 @@ const registerAPIKey = 'Token Ax&=^tx&5EM4$5jP'
 //
 
 const login = (obj) => {
-    const url = `${baseURL}/login`
+    const url = `${baseURL}/userRestService/login`
     const { name, password } = obj
     return fetch(url, {
         method: 'POST',

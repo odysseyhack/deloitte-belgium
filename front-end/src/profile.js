@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import logo from './profile.svg'
-import company from './business.svg'
-import location from './location.svg'
-import role from './role.svg'
+import logo from './img/profile.svg'
+import company from './img/business.svg'
+import location from './img/location.svg'
+import role from './img/role.svg'
 import './profile.css'
 import { localized } from './l10n'
 
