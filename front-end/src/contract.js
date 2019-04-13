@@ -1,8 +1,23 @@
 import React, { Component, Fragment } from 'react'
 import './contract.css'
 import { localized } from './l10n'
+import web from './web'
 
 class Contract extends Component {
+  send() {
+    const inputs = document.querySelectorAll('.field-option')
+    const amount = inputs[0].value
+    const address = inputs[1].value
+
+    web.sendPayment({ amount, address })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   render() {
     return (
       <Fragment>

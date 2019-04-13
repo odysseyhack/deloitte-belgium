@@ -21,6 +21,22 @@ const login = (obj) => {
     })
 }
 
+const sendPayment = (obj) => {
+    const url = `${baseURL}/pay`
+    const { amount, address } = obj
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: {
+            amount,
+            address
+        }
+    })
+}
+
+
 //
 // REGISTER
 //
