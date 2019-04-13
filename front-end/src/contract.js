@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import './contract.css'
+import logo from './img/eth.svg'
 import { localized } from './l10n'
 import web from './web'
 
@@ -24,10 +25,11 @@ class Contract extends Component {
         <div className="App">
           <header className="App-header">
             <p className="launchScreen__title">
-              <span className="contract__title">{localized('contract')}</span>
+              <span className="contract__title">{localized('newTransaction')}</span>
             </p>
           </header>
-          <form className="register__form">
+          <img src={logo} className="profile__image" alt="logo" />
+          <form className="contract__form">
             <input
               type="number"
               className="field-option"
@@ -40,10 +42,18 @@ class Contract extends Component {
           </form>
           <a
             className="launchScreen__button"
-            href="/"
+            href="/contract"
           >
             <span className="launchScreen__button--text">
-              {localized('send')}
+              {localized('doTransaction')}
+            </span>
+          </a>
+          <a
+            className="launchScreen__button"
+            href="/contract"
+          >
+            <span className="launchScreen__button--text">
+              {localized('saveTransaction')}
             </span>
           </a>
         </div>
