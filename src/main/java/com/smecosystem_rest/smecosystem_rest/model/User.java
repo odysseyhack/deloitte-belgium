@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -76,6 +78,7 @@ public class User {
     }
 
     @Column(name = "password", nullable = false)
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -95,6 +98,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "company_id")
+    @JsonBackReference
     public Company getCompany() {
         return company;
     }

@@ -7,11 +7,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public class CompanyRepositoryImpl implements CompanyRepository {
+
+    @PersistenceContext
+    protected EntityManager entityManager;
 
     @Override
     public Company getCompanyByKvkNummer(String kvkNummer) {
@@ -20,7 +25,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public List<Company> findAll() {
-        return null;
+        return entityManager.createQuery("Select t from Company t").getResultList();
     }
 
     @Override
@@ -74,8 +79,13 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     }
 
     @Override
-    public Optional<Company> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Company> findById(Long id) {
+        Company company = entityManager.find(Company.class, id);
+        if(company == null) {
+            return Optional.empty();
+        } else {
+            return  Optional.of(company);
+        }
     }
 
     @Override

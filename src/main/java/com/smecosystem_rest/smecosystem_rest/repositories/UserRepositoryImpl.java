@@ -32,6 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Transactional
     @Override
     public List<User> findAll() {
         return entityManager.createQuery("Select t from User t").getResultList();
@@ -77,9 +78,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     }
 
+    @Transactional
     @Override
     public <S extends User> S save(S entity) {
-        return null;
+        return entityManager.merge(entity);
     }
 
     @Override
@@ -87,6 +89,7 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
+    @Transactional
     @Override
     public Optional<User> findById(Long id) {
         User user = entityManager.find(User.class, id);
