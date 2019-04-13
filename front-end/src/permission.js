@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './permission.css'
-import logo from './permission.svg'
+import logo from './img/permission.svg'
 import { localized } from './l10n'
 
 class Permission extends Component {
