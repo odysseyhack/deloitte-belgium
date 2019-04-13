@@ -15,7 +15,7 @@ public class CompanyTest {
 
         // assert statements
         assertEquals("testCompanyNumber", testCompany.getKvkNummer());
-        assertNull(testCompany.getId());
+        assertEquals(testCompany.getId(),0);
         assertNull(testCompany.getWalletAddress());
     }
 
