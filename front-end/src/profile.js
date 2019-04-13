@@ -53,7 +53,7 @@ class Profile extends Component {
         </a>
         <a
           className="launchScreen__button"
-          href="/contract"
+          href="/contracts"
         >
           <span className="launchScreen__button--text">
             {localized('transactions')}
