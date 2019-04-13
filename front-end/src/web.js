@@ -14,10 +14,10 @@ const login = (obj) => {
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
-        body: {
+        body: JSON.stringify({
             firstName: name,
             password
-        }
+        })
     })
 }
 
@@ -29,10 +29,10 @@ const sendPayment = (obj) => {
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
-        body: {
+        body: JSON.stringify({
             amount,
             address
-        }
+        })
     })
 }
 
