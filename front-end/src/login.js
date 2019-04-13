@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './login.css'
 import web from './web'
-import { localized } from './l10n';
+import { localized } from './l10n'
 
 class Login extends Component {
   login() {
@@ -12,6 +12,10 @@ class Login extends Component {
     web.login({ name, password })
       .then(response => {
         console.log(response)
+        if (response.status === 200) {
+          // window.history.pushState(null, null, '/profile')
+          window.location.href = '/profile'
+        }
       })
       .catch(error => {
         console.log(error)
@@ -32,6 +36,7 @@ class Login extends Component {
             placeholder={localized('name')}
           />
           <input
+            type="password"
             className="field-option"
             placeholder={localized('password')}
           />

@@ -4,6 +4,7 @@ import LaunchScreen from './LaunchScreen'
 import Register from './register'
 import Login from './login'
 import CameraScreen from './cameraScreen'
+import Contracts from './contracts'
 import Contract from './contract'
 import Profile from './profile'
 import Permission from './permission'
@@ -22,6 +23,8 @@ class App extends Component {
         return <Login />
       case '/camera':
         return <CameraScreen />
+      case '/contracts':
+        return <Contracts />
       case '/contract':
         return <Contract />
       case '/profile':
