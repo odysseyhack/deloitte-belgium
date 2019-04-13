@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './login.css'
 import web from './web'
+import { localized } from './l10n';
 
 class Login extends Component {
   login() {
@@ -22,17 +23,17 @@ class Login extends Component {
       <div className="App">
         <header className="App-header">
           <p className="login__title">
-            <span className="login__title--text">Login</span>
+            <span className="login__title--text">{localized('signIn')}</span>
           </p>
         </header>
         <form className="register__form">
           <input
             className="field-option"
-            placeholder="Naam"
+            placeholder={localized('name')}
           />
           <input
             className="field-option"
-            placeholder="Passwoord"
+            placeholder={localized('password')}
           />
         </form>
         <button
@@ -40,16 +41,16 @@ class Login extends Component {
           onClick={this.login}
         >
           <span className="launchScreen__button--text">
-            Login
-        </span>
+            {localized('signIn')}
+          </span>
         </button>
         <a
           className="launchScreen__button"
           href="/"
         >
           <span className="launchScreen__button--text">
-            Terug
-        </span>
+            {localized('back')}
+          </span>
         </a>
       </div>
     )

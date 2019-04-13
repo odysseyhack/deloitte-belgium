@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './LaunchScreen.css'
+import { localized } from './l10n'
 
 class LaunchScreen extends Component {
   render() {
@@ -8,7 +9,7 @@ class LaunchScreen extends Component {
       <div className="App">
         <header className="App-header">
           <p className="launchScreen__title">
-            <span className="register">register</span><br /><span className="van-koophandel">van koophandel</span>
+            <span className="register">{localized('launchScreenTitle0')}</span><br /><span className="van-koophandel">{localized('launchScreenTitle1')}</span>
           </p>
         </header>
         <img src={logo} className="App-logo" alt="logo" />
@@ -17,16 +18,16 @@ class LaunchScreen extends Component {
           href="/register"
         >
           <span className="launchScreen__button--text">
-            Registreer voor certificaat
-        </span>
+            {localized('registerForCertificate')}
+          </span>
         </a>
         <a
           className="launchScreen__button"
           href="/login"
         >
           <span className="launchScreen__button--text">
-            Login
-        </span>
+            {localized('signIn')}
+          </span>
         </a>
       </div>
     )
