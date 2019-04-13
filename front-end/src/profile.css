@@ -1,0 +1,41 @@
+.profile__image {
+	height: 128px;
+	width: 90px;
+}
+
+.profile__name {
+	height: 54px;
+	width: 310px;
+	color: #00526E;
+	font-size: 20px;
+	letter-spacing: 0.5px;
+	line-height: 28px;
+  text-align: center;
+  margin: 24px 0 0 0;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__info--item {
+  display: flex;
+	height: 22px;
+	width: 129px;
+	color: #03243A;
+	font-size: 16px;
+	letter-spacing: 0.4px;
+  line-height: 23px;
+  margin: 12px 0;
+}
+
+.profile__info--image {
+  height: 24px;
+  width: 32px;
+  object-fit: contain;
+  margin: 0 8px 0 0;
+  padding: 0;
+  align-self: flex-start;
+  justify-self: flex-start;
+}
