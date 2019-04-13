@@ -3,9 +3,12 @@ import './App.css'
 import LaunchScreen from './LaunchScreen'
 import Register from './register'
 import Login from './login'
-import CameraScreen from './cameraScreen';
+import CameraScreen from './cameraScreen'
 
 class App extends Component {
+  componentDidMount() {
+  }
+
   router() {
     switch (document.location.pathname) {
       case '/':
