@@ -29,7 +29,7 @@ const localizations = {
     legalForm: 'Rechtsvorm',
     establishment: 'Vestiging',
     creationDate: 'Datum van oprichting',
-    enterBusinessInformation: 'vul hier uw bedrijfsinformatie in',
-    alreadyRegistered: 'al geregistreerd?',
+    enterBusinessInformation: 'Vul hier uw bedrijfsinformatie in',
+    alreadyRegistered: 'Al geregistreerd?',
   },
 }
