@@ -45,7 +45,7 @@ class Profile extends Component {
         </div>
         <a
           className="launchScreen__button"
-          href="/profile"
+          href="/permission"
         >
           <span className="launchScreen__button--text">
             {localized('checkPermissions')}
@@ -53,7 +53,7 @@ class Profile extends Component {
         </a>
         <a
           className="launchScreen__button"
-          href="/profile"
+          href="/contract"
         >
           <span className="launchScreen__button--text">
             {localized('transactions')}

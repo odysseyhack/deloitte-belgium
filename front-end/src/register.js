@@ -21,15 +21,7 @@ class LaunchScreen extends Component {
           />
           <input
             className="field-option"
-            placeholder={localized('legalForm')}
-          />
-          <input
-            className="field-option"
-            placeholder={localized('establishment')}
-          />
-          <input
-            className="field-option"
-            placeholder={localized('creationDate')}
+            placeholder={localized('registrationNumber')}
           />
         </form>
         <a
