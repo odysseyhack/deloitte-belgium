@@ -17,18 +17,20 @@ class CameraScreen extends Component {
     const context = canvas.getContext('2d')
     context.drawImage(video, 0, 0, canvas.width, canvas.height)
     this.stopVideo()
+    this.getImage()
   }
 
   getImage() {
     const canvas = document.querySelector('canvas')
     const data = canvas.toDataURL()
     const blob = util.dataToBlob(data)
-    console.log(data)
-    console.log(blob)
+    return blob
   }
 
   componentDidMount() {
     util.getCameraAccess()
+
+    // TODO: get camera access -> completion handler -> set canvas to size of video
 
     const canvas = document.querySelector('canvas')
     canvas.setAttribute('width', window.getComputedStyle(canvas, null).getPropertyValue('width'))
