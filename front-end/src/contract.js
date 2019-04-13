@@ -40,22 +40,21 @@ class Contract extends Component {
               placeholder={localized('address')}
             />
           </form>
-          <a
+          <button
             className="launchScreen__button"
-            href="/contract"
+            onClick={this.send}
           >
             <span className="launchScreen__button--text">
               {localized('doTransaction')}
             </span>
-          </a>
-          <a
+          </button>
+          <button
             className="launchScreen__button"
-            href="/contract"
           >
             <span className="launchScreen__button--text">
               {localized('saveTransaction')}
             </span>
-          </a>
+          </button>
         </div>
       </Fragment>
     )
