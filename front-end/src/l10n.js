@@ -26,6 +26,7 @@ const localizations = {
     amount: 'Bedrag',
     address: 'Adres',
     contract: 'Contract',
+    profile: 'Profiel',
     launchScreenTitle0: 'register',
     launchScreenTitle1: 'van koophandel',
     step1: 'stap 1',
@@ -35,5 +36,8 @@ const localizations = {
     creationDate: 'Datum van oprichting',
     enterBusinessInformation: 'Vul hier uw bedrijfsinformatie in',
     alreadyRegistered: 'Al geregistreerd?',
+    checkPermissions: 'Bekijk Permissies',
+    transactions: 'Transacties',
+    showQRCode: 'QR-code tonen'
   },
 }
