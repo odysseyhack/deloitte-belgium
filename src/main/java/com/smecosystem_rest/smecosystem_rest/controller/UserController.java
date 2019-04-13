@@ -2,6 +2,7 @@ package com.smecosystem_rest.smecosystem_rest.controller;
 
 import com.smecosystem_rest.smecosystem_rest.exception.ResourceNotFoundException;
 import com.smecosystem_rest.smecosystem_rest.model.User;
+import com.smecosystem_rest.smecosystem_rest.model.transfer_objects.LoginData;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepository;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepositoryImpl;
 import com.smecosystem_rest.smecosystem_rest.services.UserService;
@@ -20,6 +21,7 @@ import java.security.NoSuchProviderException;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/userRestService")
 public class UserController {
 
@@ -43,11 +45,11 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-
-    @GetMapping("/login/{firstName}/{password}")
-    public ResponseEntity<User> login(
-            @PathVariable(value = "firstName") String firstName, @PathVariable(value = "password") String password) throws ResourceNotFoundException, IllegalAccessException {
-        return ResponseEntity.ok().body(userService.login(firstName,password));
+    @PostMapping("/login")
+    public String login(@Valid @RequestBody LoginData loginData) {
+        System.out.println(loginData);
+        int x = 5;
+        return "Test completed";
     }
 
     @GetMapping("/getUserWalletAddress/{id}")

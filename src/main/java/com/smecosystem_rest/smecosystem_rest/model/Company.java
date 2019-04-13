@@ -12,6 +12,7 @@ public class Company {
 
     private long id;
     private String kvkNummer;
+    private String name;
     private String walletAddress;
     private String kvkListAddress;
     private List<User> users;
@@ -60,5 +61,14 @@ public class Company {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
