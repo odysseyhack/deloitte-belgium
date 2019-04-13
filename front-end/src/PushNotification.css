@@ -1,0 +1,21 @@
+
+.pushNotification {
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-start;
+  align-content: center;
+  margin: 16px;
+  padding: 0 0 0 16px;
+  width: 240px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: #CDCDCD;
+  color: '#000000';
+}
+
+.pushNotification__content {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}

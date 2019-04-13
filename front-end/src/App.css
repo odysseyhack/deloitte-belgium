@@ -14,7 +14,7 @@ a {
 }
 
 .App-logo {
-  animation: zoom infinite 1s ease-in-out;
+  /* animation: zoom infinite 1s ease-in-out; */
   width: 240px;
   height: 278.68px;
   margin: 32px 0;
