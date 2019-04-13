@@ -2,6 +2,7 @@ package com.smecosystem_rest.smecosystem_rest.services;
 
 import com.smecosystem_rest.smecosystem_rest.model.User;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepository;
+import com.smecosystem_rest.smecosystem_rest.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.CipherException;
@@ -16,7 +17,7 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryImpl userRepository;
 
     public String getWalletAddressById(Long userId, String password) throws IOException, CipherException {
         Optional<User> user = userRepository.findById(userId);
@@ -40,6 +41,19 @@ public class UserService {
         }
         else {
             throw new NoResultException();
+        }
+    }
+
+    public User login(String firstName, String password) throws IllegalAccessException {
+        User user = userRepository.findByFirstName(firstName);
+        if(user == null) {
+            return null;
+        } else {
+            if(user.getPassword().equals(password)) {
+                return user;
+            } else {
+                throw new IllegalAccessException("The wrong password was used");
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ package com.smecosystem_rest.smecosystem_rest.controller;
 import com.smecosystem_rest.smecosystem_rest.exception.ResourceNotFoundException;
 import com.smecosystem_rest.smecosystem_rest.model.User;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepository;
+import com.smecosystem_rest.smecosystem_rest.repositories.UserRepositoryImpl;
 import com.smecosystem_rest.smecosystem_rest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ import java.util.*;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryImpl userRepository;
 
 
     @Autowired
@@ -40,6 +41,13 @@ public class UserController {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: "+ userId));
         return ResponseEntity.ok().body(user);
+    }
+
+
+    @GetMapping("/login/{firstName}/{password}")
+    public ResponseEntity<User> login(
+            @PathVariable(value = "firstName") String firstName, @PathVariable(value = "password") String password) throws ResourceNotFoundException, IllegalAccessException {
+        return ResponseEntity.ok().body(userService.login(firstName,password));
     }
 
     @GetMapping("/getUserWalletAddress/{id}")
@@ -65,7 +73,6 @@ public class UserController {
         user.setEmailAddress(userDetails.getEmailAddress());
         user.setLastName(userDetails.getLastName());
         user.setFirstName(userDetails.getFirstName());
-        user.setUpdatedAt(new Date());
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }

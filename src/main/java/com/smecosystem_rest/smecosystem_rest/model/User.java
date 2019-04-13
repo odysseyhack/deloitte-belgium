@@ -31,11 +31,6 @@ public class User {
     private String walletAddress;
     private String password;
 
-    private Date createdAt;
-    private String createdBy;
-    private Date updatedAt;
-    private String updatedby;
-
     public static String getWalletPath() {
         return walletPath;
     }
@@ -73,42 +68,6 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-    @Column(name = "created_at", nullable = false)
-    @CreatedDate
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    @Column(name = "created_by", nullable = false)
-    @CreatedBy
-    public String getCreatedBy() {
-        return createdBy;
-    }
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    @Column(name = "updated_at", nullable = false)
-    @LastModifiedDate
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Column(name = "updated_by", nullable = false)
-    @LastModifiedBy
-    public String getUpdatedby() {
-        return updatedby;
-    }
-    public void setUpdatedby(String updatedby) {
-        this.updatedby = updatedby;
-    }
-
     @Column(name = "wallet_address")
     public String getWalletAddress() {
         return walletAddress;
@@ -118,7 +77,7 @@ public class User {
         this.walletAddress = walletAddress;
     }
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
