@@ -2,6 +2,7 @@ package com.smecosystem_rest.smecosystem_rest.controller;
 
 import com.smecosystem_rest.smecosystem_rest.exception.ResourceNotFoundException;
 import com.smecosystem_rest.smecosystem_rest.model.User;
+import com.smecosystem_rest.smecosystem_rest.model.transfer_objects.Credentials;
 import com.smecosystem_rest.smecosystem_rest.model.transfer_objects.LoginData;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepository;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepositoryImpl;
@@ -121,6 +122,13 @@ public class UserController {
         // ideally this comes from the user repository
         String walletAddress = this.userService.getWalletAddressById(userId, password);
         return ResponseEntity.ok().body("User wallet found with address with name: " + walletAddress);
+    }
+
+    @GetMapping("/getCredentials/{password}/{userId}")
+    public ResponseEntity<Credentials> getCredentials(@PathVariable(value = "password") String password, @PathVariable(value = "userId") Long userId) throws ResourceNotFoundException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, CipherException, IOException, IllegalAccessException {
+        // ideally this comes from the user repository
+        Credentials credentials = this.userService.getCredentials(userId, password);
+        return ResponseEntity.ok().body(credentials);
     }
 
 }
