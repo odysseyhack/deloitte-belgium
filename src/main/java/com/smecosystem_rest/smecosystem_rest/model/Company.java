@@ -3,6 +3,7 @@ package com.smecosystem_rest.smecosystem_rest.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "company")
@@ -11,7 +12,10 @@ public class Company {
 
     private long id;
     private String kvkNummer;
+    private String name;
     private String walletAddress;
+    private String kvkListAddress;
+    private List<User> users;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,5 +43,32 @@ public class Company {
 
     public void setWalletAddress(String walletAddress) {
         this.walletAddress = walletAddress;
+    }
+
+    @Column(name = "kvk_list_address")
+    public String getKvkListAddress() {
+        return kvkListAddress;
+    }
+
+    public void setKvkListAddress(String kvkListAddress) {
+        this.kvkListAddress = kvkListAddress;
+    }
+
+    @OneToMany(mappedBy="company")
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

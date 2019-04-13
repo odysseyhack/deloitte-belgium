@@ -2,13 +2,7 @@ package com.smecosystem_rest.smecosystem_rest.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -30,6 +24,10 @@ public class User {
     private String emailAddress;
     private String walletAddress;
     private String password;
+    private String kvkNumber;
+    private Company company;
+    private boolean purchaseRights;
+    private boolean salesRights;
 
     public static String getWalletPath() {
         return walletPath;
@@ -84,5 +82,42 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Column(name = "kvk_number", nullable = false)
+    public String getKvkNumber() {
+        return kvkNumber;
+    }
+
+    public void setKvkNumber(String kvkNumber) {
+        this.kvkNumber = kvkNumber;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @Column(name = "purchase_rights", nullable = false)
+    public boolean isPurchaseRights() {
+        return purchaseRights;
+    }
+
+    public void setPurchaseRights(boolean purchaseRights) {
+        this.purchaseRights = purchaseRights;
+    }
+
+    @Column(name = "sales_rights", nullable = false)
+    public boolean isSalesRights() {
+        return salesRights;
+    }
+
+    public void setSalesRights(boolean salesRights) {
+        this.salesRights = salesRights;
     }
 }

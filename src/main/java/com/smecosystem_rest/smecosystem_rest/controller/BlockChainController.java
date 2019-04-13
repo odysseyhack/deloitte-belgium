@@ -8,10 +8,7 @@ import com.smecosystem_rest.smecosystem_rest.model.smartcontracts.MultiSig23;
 import com.smecosystem_rest.smecosystem_rest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
@@ -20,18 +17,16 @@ import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.Contract;
-import org.web3j.tx.ManagedTransaction;
 import org.web3j.tx.Transfer;
 import org.web3j.utils.Convert;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/blockchainRestService")
 public class BlockChainController {
 
@@ -96,12 +91,19 @@ public class BlockChainController {
         return ResponseEntity.ok().body("The contract address is: " +contract.getContractAddress());
     }
 
-
     @GetMapping("/deployMultiSigContract/{password}/{userId}")
     public ResponseEntity<String> deployMultiSigContract(@PathVariable(value = "password") String password,
                                                 @PathVariable(value = "userId") Long userId) throws Exception {
         Credentials cred = this.userService.getCredentials(password, userId);
         MultiSig23 contract = MultiSig23.deploy(web3j, cred, new DefaultContractGasProvider(),"0x2499316Ba3F9fbB9f52EdeEbF4eD998f625Fa44a","0xdFEC90a1C280dEcc45FEAF1994cff6E0d4F8772e","0x7190e7eCBdeA76CEA608C616E21cbEEbc71A7C6a").send();
         return ResponseEntity.ok().body("The contract address is: " +contract.getContractAddress());
+    }
+
+
+    @GetMapping("/deployKVKList/{password}/{userId}")
+    public ResponseEntity<String> deployKVKList(@PathVariable(value = "password") String password,
+                                                @PathVariable(value = "userId") Long userId) throws Exception {
+        Credentials cred = this.userService.getCredentials(password, userId);
+        return null;
     }
 }
