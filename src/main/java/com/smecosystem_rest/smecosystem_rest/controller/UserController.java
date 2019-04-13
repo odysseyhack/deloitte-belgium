@@ -46,10 +46,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid @RequestBody LoginData loginData) {
-        System.out.println(loginData);
-        int x = 5;
-        return "Test completed";
+    public  ResponseEntity<User> login(@Valid @RequestBody LoginData loginData) throws IllegalAccessException {
+        User user = userService.login(loginData.getFirstName(), loginData.getPassword());
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/getUserWalletAddress/{id}")
@@ -62,7 +61,17 @@ public class UserController {
 
     @PostMapping("/createUser")
     public User createUser(@Valid @RequestBody User user) {
+        this.userService.createUser(user);
         return userRepository.save(user);
+    }
+
+
+    @GetMapping("/addCompanyToUser/{id}/{company_id}")
+    public ResponseEntity<User> addCompanyToUser( @PathVariable(value = "id") Long user_id,
+                                                  @PathVariable(value = "company_id") Long company_id) throws IllegalAccessException {
+
+        User user = this.userService.addCompanyToUser(user_id, company_id);
+        return ResponseEntity.ok(user);
     }
 
     @PutMapping("/updateUser/{id}")

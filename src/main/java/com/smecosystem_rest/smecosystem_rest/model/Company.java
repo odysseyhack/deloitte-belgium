@@ -1,5 +1,6 @@
 package com.smecosystem_rest.smecosystem_rest.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -55,6 +56,7 @@ public class Company {
     }
 
     @OneToMany(mappedBy="company")
+    @JsonManagedReference
     public List<User> getUsers() {
         return users;
     }
