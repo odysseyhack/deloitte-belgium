@@ -1,5 +1,5 @@
 
-.permission__card {
+.permission__card, .permissionDirector__card {
 	height: 176px;
 	width: 303px;
 	border: 2px solid rgba(3,36,58,0.2);
@@ -9,6 +9,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.permissionDirector__card {
+  border: none;
+  margin: 8px 0;
+  padding: 8px 0;
+  height: inherit;
 }
 
 .permission__card--title {

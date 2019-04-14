@@ -47,7 +47,7 @@ class ProfileDirector extends Component {
         </div>
         <a
           className="launchScreen__button"
-          href="/permission"
+          href="/permission/1"
         >
           <span className="launchScreen__button--text">
             {localized('checkPermissions')}
