@@ -51,7 +51,7 @@ class PermissionDirector extends Component {
             </span>
             :
             {' '}
-            {this.state.name}
+            {this.state.company}
           </div>
           <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
@@ -59,7 +59,7 @@ class PermissionDirector extends Component {
             </span>
             :
             {' '}
-            {this.state.name}
+            {this.state.role}
           </div>
           <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
@@ -67,7 +67,7 @@ class PermissionDirector extends Component {
             </span>
             :
             {' '}
-            {this.state.name}
+            {this.state.mainActivity}
           </div>
           <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
@@ -75,7 +75,7 @@ class PermissionDirector extends Component {
             </span>
             :
             {' '}
-            {this.state.name}
+            {this.state.permissions[0]}
           </div>
         </div>
 
