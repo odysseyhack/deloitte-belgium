@@ -156,7 +156,6 @@ public class BlockChainController {
         }
     }
 
-
     @GetMapping("/viewPermissions")
     public ResponseEntity<String> viewPermissions() throws Exception {
         Optional<Company> company = companyRepository.findById(5l);
