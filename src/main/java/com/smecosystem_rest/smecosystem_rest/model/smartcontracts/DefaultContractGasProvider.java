@@ -7,12 +7,12 @@ import java.math.BigInteger;
 public class DefaultContractGasProvider implements ContractGasProvider {
     @Override
     public BigInteger getGasPrice(String contractFunc) {
-        return BigInteger.valueOf(22_000_000_000L);
+        return BigInteger.valueOf(200L);
     }
 
     @Override
     public BigInteger getGasPrice() {
-        return BigInteger.valueOf(22_000_000_000L);
+        return BigInteger.valueOf(200L);
     }
 
     @Override
