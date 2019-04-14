@@ -195,6 +195,7 @@ public class BlockChainController {
             boolean validity = contract.isValid();
             RemoteCall<Tuple3<String, BigInteger, BigInteger>> info = contract.getCompanyInformation();
             Tuple4<String, Boolean, Boolean, BigInteger> userInfo = contract.getAddressInfo("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
+            BigInteger price = contract.requestCurrentGasPrice();
             TransactionReceipt transfer = contract.makePurchasePayment("0xe2b29592bc6a24fd69db0207fe2ee3c6b652d735", BigInteger.valueOf((long) 0.5)).send();
             return ResponseEntity.ok().body(info.toString());
         } else {
