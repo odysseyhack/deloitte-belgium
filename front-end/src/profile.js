@@ -9,8 +9,8 @@ import { localized } from './l10n'
 class Profile extends Component {
   state = {
     name: 'Peter',
-    business: 'Deloitte',
-    location: 'Brussel',
+    business: 'De Suikerfabriek',
+    location: 'Groningen',
     function: 'Bedrijfsleider'
   }
 

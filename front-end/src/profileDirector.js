@@ -11,8 +11,8 @@ import { localized } from './l10n'
 class ProfileDirector extends Component {
   state = {
     name: 'Kasper',
-    business: 'Deloitte',
-    location: 'Brussel',
+    business: 'De Suikerfabriek',
+    location: 'Groningen',
     function: 'Directeur'
   }
 
