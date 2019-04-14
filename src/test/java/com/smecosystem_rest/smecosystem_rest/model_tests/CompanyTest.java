@@ -12,8 +12,18 @@ public class CompanyTest {
     public void companyMethods() {
         Company testCompany= new Company(); // MyClass is tested
         testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
+        testCompany.setKvkNummer("testCompanyNumber");
 
         // assert statements
+        assertEquals("testCompanyNumber", testCompany.getKvkNummer());
+        assertEquals("testCompanyNumber", testCompany.getKvkNummer());
+        assertEquals("testCompanyNumber", testCompany.getKvkNummer());
         assertEquals("testCompanyNumber", testCompany.getKvkNummer());
         assertEquals(testCompany.getId(),0);
         assertNull(testCompany.getWalletAddress());

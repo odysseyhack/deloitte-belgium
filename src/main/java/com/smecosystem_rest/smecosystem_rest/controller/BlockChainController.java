@@ -41,7 +41,7 @@ public class BlockChainController {
     @Autowired
     private CompanyRepositoryImpl companyRepository;
 
-    private final String DEFAULT_ADDRESS = "http://127.0.0.1:7545";
+    private final String DEFAULT_ADDRESS = "http://127.0.0.1:9545";
 
     private final Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
 
@@ -156,7 +156,6 @@ public class BlockChainController {
         }
     }
 
-
     @GetMapping("/viewPermissions")
     public ResponseEntity<String> viewPermissions() throws Exception {
         Optional<Company> company = companyRepository.findById(5l);
@@ -172,8 +171,8 @@ public class BlockChainController {
         }
     }
 
-    @GetMapping("/adjustLimit")
-    public ResponseEntity<String> adjustLimit() throws Exception {
+    @GetMapping("/increaseLimit")
+    public ResponseEntity<String> increaseLimit() throws Exception {
         Optional<Company> company = companyRepository.findById(5l);
         if(company.isPresent()) {
             Credentials credentials = this.userService.getCredentials("password", 1l);
@@ -186,18 +185,33 @@ public class BlockChainController {
         }
     }
 
+
+    @GetMapping("/decreaseLimit")
+    public ResponseEntity<String> decreaseLimit() throws Exception {
+        Optional<Company> company = companyRepository.findById(5l);
+        if(company.isPresent()) {
+            Credentials credentials = this.userService.getCredentials("password", 1l);
+            Company foundCompany = company.get();
+            CompanyName contract = CompanyName.load(company.get().getWalletAddress(), web3j, credentials, new DefaultContractGasProvider());
+            contract.changeSpendingLimit("0x41857224b19186d27b8aa71b31ca19ca055ee572", BigInteger.valueOf(1000L)).send();
+            return ResponseEntity.ok().body("Limit adjusted");
+        } else {
+            throw new IllegalAccessException("Company not found in the database");
+        }
+    }
+
    @GetMapping("/transferFunds/{companyId}")
    public ResponseEntity<String> transferFundsFromCompanyWallet(@PathVariable(value = "companyId") Long companyId) throws Exception {
         Optional<Company> company = companyRepository.findById(5l);
         if(company.isPresent()) {
            Credentials credentials = this.userService.getCredentials("password", 1l);
             CompanyName contract = CompanyName.load(company.get().getWalletAddress(), web3j, credentials, new DefaultContractGasProvider());
-            boolean validity = contract.isValid();
             RemoteCall<Tuple3<String, BigInteger, BigInteger>> info = contract.getCompanyInformation();
             Tuple4<String, Boolean, Boolean, BigInteger> userInfo = contract.getAddressInfo("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
             BigInteger price = contract.requestCurrentGasPrice();
-            TransactionReceipt transfer = contract.makePurchasePayment("0xe2b29592bc6a24fd69db0207fe2ee3c6b652d735", BigInteger.valueOf((long) 0.5)).send();
-            return ResponseEntity.ok().body(info.toString());
+            TransactionReceipt transfer = contract.makePurchasePayment("0xDDF220D8740FE1f302Ede1d7B738CEaDe508EB1D", BigInteger.valueOf((long) 500000000)).send();
+            contract.makePurchasePayment("0xDDF220D8740FE1f302Ede1d7B738CEaDe508EB1D", BigInteger.valueOf(1000000000000000000L)).send();
+            return ResponseEntity.ok().body(transfer.getBlockNumber().toString());
         } else {
             throw new IllegalAccessException("Company not found in the database");
         }

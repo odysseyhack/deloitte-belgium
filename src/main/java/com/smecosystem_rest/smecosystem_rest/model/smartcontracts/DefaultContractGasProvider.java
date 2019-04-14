@@ -17,11 +17,11 @@ public class DefaultContractGasProvider implements ContractGasProvider {
 
     @Override
     public BigInteger getGasLimit(String contractFunc) {
-        return BigInteger.valueOf(444_300_000);
+        return BigInteger.valueOf(4_300_000);
     }
 
     @Override
     public BigInteger getGasLimit() {
-        return BigInteger.valueOf(444_300_000);
+        return BigInteger.valueOf(4_300_000);
     }
 }

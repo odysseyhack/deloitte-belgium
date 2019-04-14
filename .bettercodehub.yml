@@ -1,3 +1,4 @@
 exclude:
 - /src/main/java/com/smecosystem_rest/smecosystem_rest/model/smartcontracts/.*
+- /front-end/.*
 - /src/main/resources/.*

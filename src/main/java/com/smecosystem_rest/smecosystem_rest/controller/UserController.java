@@ -27,21 +27,17 @@ import java.util.*;
 public class UserController {
 
     @Autowired
-    private UserRepositoryImpl userRepository;
-
-
-    @Autowired
     private UserService userService;
 
     @GetMapping("/list")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userService.findAll();
     }
 
     @GetMapping("/getUser/{id}")
     public ResponseEntity<User> getUserById(
             @PathVariable(value = "id") Long userId) throws ResourceNotFoundException {
-        User user = userRepository.findById(userId)
+        User user = userService.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: "+ userId));
         return ResponseEntity.ok().body(user);
     }
@@ -55,7 +51,7 @@ public class UserController {
     @GetMapping("/getUserWalletAddress/{id}")
     public ResponseEntity<String> getUserWalletAddress(
             @PathVariable(value = "id") Long userId) throws ResourceNotFoundException {
-        User user = userRepository.findById(userId)
+        User user = userService.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: "+ userId));
         return ResponseEntity.ok().body(user.getWalletAddress());
     }
@@ -63,7 +59,7 @@ public class UserController {
     @PostMapping("/createUser")
     public User createUser(@Valid @RequestBody User user) {
         this.userService.createUser(user);
-        return userRepository.save(user);
+        return userService.save(user);
     }
 
 
@@ -79,23 +75,23 @@ public class UserController {
     public ResponseEntity<User> updateUser(
             @PathVariable(value = "id") Long userId,
             @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
-        User user = userRepository.findById(userId)
+        User user = userService.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: "+ userId));
 
         user.setEmailAddress(userDetails.getEmailAddress());
         user.setLastName(userDetails.getLastName());
         user.setFirstName(userDetails.getFirstName());
-        final User updatedUser = userRepository.save(user);
+        final User updatedUser = userService.save(user);
         return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/user/{id}")
     public Map<String, Boolean> deleteUser(
             @PathVariable(value = "id") Long userId) throws Exception {
-        User user = userRepository.findById(userId)
+        User user = userService.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: "+ userId));
 
-        userRepository.delete(user);
+        userService.delete(user);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
@@ -105,12 +101,12 @@ public class UserController {
     public ResponseEntity<String> createNewWallet(@PathVariable(value = "password") String password, @PathVariable(value = "userId") Long userId) throws ResourceNotFoundException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, CipherException, IOException {
 
         // ideally this comes from the user repository
-        Optional<User> user = this.userRepository.findById(userId);
+        Optional<User> user = this.userService.findById(userId);
         if(user.isPresent()) {
             User foundUser = user.get();
             String filename = WalletUtils.generateNewWalletFile(password, new File(User.getWalletPath()));
             foundUser.setWalletAddress(filename);
-            userRepository.save(foundUser);
+            userService.save(foundUser);
             return ResponseEntity.ok().body("User wallet created with name: " + filename);
         } else {
             throw new ResourceNotFoundException("User not found on :: "+ userId);
