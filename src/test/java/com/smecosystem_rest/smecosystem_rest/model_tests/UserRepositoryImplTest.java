@@ -478,7 +478,6 @@ public class UserRepositoryImplTest {
         x = 8;
         x = 8;
 
-
         Assert.notNull(userRepositoryImpl.findById(1l), "should not be null");
     }
 }
