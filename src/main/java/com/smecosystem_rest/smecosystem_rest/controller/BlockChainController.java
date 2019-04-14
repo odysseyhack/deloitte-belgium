@@ -41,7 +41,7 @@ public class BlockChainController {
     @Autowired
     private CompanyRepositoryImpl companyRepository;
 
-    private final String DEFAULT_ADDRESS = "http://127.0.0.1:9545";
+    private final String DEFAULT_ADDRESS = "http://127.0.0.1:7545";
 
     private final Web3j web3j = Web3j.build(new HttpService(DEFAULT_ADDRESS));
 
@@ -146,11 +146,25 @@ public class BlockChainController {
             Credentials credentials = this.userService.getCredentials("password", 1l);
             Company foundCompany = company.get();
             KVKList contract = KVKList.load(company.get().getKvkListAddress(), web3j, credentials, new DefaultContractGasProvider());
-            contract.grantAccessPurchases("0x1abe1dc73dfc3dc085f66a8dcf73b9e1617a34e0").send();
-            contract.grantAccessSales("0x1abe1dc73dfc3dc085f66a8dcf73b9e1617a34e0").send();
-            contract.grantAccessPurchases("0x9631a13eacb39884beb8414cc7f820ac504418da").send();
-            contract.grantAccessSales("0x9631a13eacb39884beb8414cc7f820ac504418da").send();
+            contract.grantAccessPurchases("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
+            contract.grantAccessSales("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
             return ResponseEntity.ok().body("Permissions added");
+        } else {
+            throw new IllegalAccessException("Company not found in the database");
+        }
+    }
+
+
+    @GetMapping("/removePermissions")
+    public ResponseEntity<String> removePermissions() throws Exception {
+        Optional<Company> company = companyRepository.findById(5l);
+        if(company.isPresent()) {
+            Credentials credentials = this.userService.getCredentials("password", 1l);
+            Company foundCompany = company.get();
+            KVKList contract = KVKList.load(company.get().getKvkListAddress(), web3j, credentials, new DefaultContractGasProvider());
+            contract.removeAccessPurchases("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
+            contract.removeAccessSales("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
+            return ResponseEntity.ok().body("Permissions removed");
         } else {
             throw new IllegalAccessException("Company not found in the database");
         }
@@ -179,12 +193,11 @@ public class BlockChainController {
             Company foundCompany = company.get();
             CompanyName contract = CompanyName.load(company.get().getWalletAddress(), web3j, credentials, new DefaultContractGasProvider());
             contract.changeSpendingLimit("0x41857224b19186d27b8aa71b31ca19ca055ee572", BigInteger.valueOf(1000000000000000000L)).send();
-            return ResponseEntity.ok().body("Limit adjusted");
+            return ResponseEntity.ok().body("Limit increased");
         } else {
             throw new IllegalAccessException("Company not found in the database");
         }
     }
-
 
     @GetMapping("/decreaseLimit")
     public ResponseEntity<String> decreaseLimit() throws Exception {
@@ -193,7 +206,21 @@ public class BlockChainController {
             Credentials credentials = this.userService.getCredentials("password", 1l);
             Company foundCompany = company.get();
             CompanyName contract = CompanyName.load(company.get().getWalletAddress(), web3j, credentials, new DefaultContractGasProvider());
-            contract.changeSpendingLimit("0x41857224b19186d27b8aa71b31ca19ca055ee572", BigInteger.valueOf(1000L)).send();
+            contract.changeSpendingLimit("0x41857224b19186d27b8aa71b31ca19ca055ee572", BigInteger.valueOf(0L)).send();
+            return ResponseEntity.ok().body("Limit decreased");
+        } else {
+            throw new IllegalAccessException("Company not found in the database");
+        }
+    }
+    
+    @GetMapping("/checkLimit")
+    public ResponseEntity<String> checkLimit() throws Exception {
+        Optional<Company> company = companyRepository.findById(5l);
+        if(company.isPresent()) {
+            Credentials credentials = this.userService.getCredentials("password", 1l);
+            Company foundCompany = company.get();
+            CompanyName contract = CompanyName.load(company.get().getWalletAddress(), web3j, credentials, new DefaultContractGasProvider());
+            Tuple4<String, Boolean, Boolean, BigInteger> info = contract.getAddressInfo("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
             return ResponseEntity.ok().body("Limit adjusted");
         } else {
             throw new IllegalAccessException("Company not found in the database");
@@ -208,10 +235,11 @@ public class BlockChainController {
             CompanyName contract = CompanyName.load(company.get().getWalletAddress(), web3j, credentials, new DefaultContractGasProvider());
             RemoteCall<Tuple3<String, BigInteger, BigInteger>> info = contract.getCompanyInformation();
             Tuple4<String, Boolean, Boolean, BigInteger> userInfo = contract.getAddressInfo("0x41857224b19186d27b8aa71b31ca19ca055ee572").send();
+            Tuple4<String, Boolean, Boolean, BigInteger> userInfo2 = contract.getAddressInfo("0xDDF220D8740FE1f302Ede1d7B738CEaDe508EB1D").send();
             BigInteger price = contract.requestCurrentGasPrice();
-            TransactionReceipt transfer = contract.makePurchasePayment("0xDDF220D8740FE1f302Ede1d7B738CEaDe508EB1D", BigInteger.valueOf((long) 500000000)).send();
-            contract.makePurchasePayment("0xDDF220D8740FE1f302Ede1d7B738CEaDe508EB1D", BigInteger.valueOf(1000000000000000000L)).send();
-            return ResponseEntity.ok().body(transfer.getBlockNumber().toString());
+            contract.makePurchasePayment("0x41857224b19186d27b8aa71b31ca19ca055ee572", BigInteger.valueOf(10000000000000000L)).send();
+            contract.makePurchasePayment("0xDDF220D8740FE1f302Ede1d7B738CEaDe508EB1D", BigInteger.valueOf(10000000000000000L)).send();
+            return ResponseEntity.ok().body("Funds transfered");
         } else {
             throw new IllegalAccessException("Company not found in the database");
         }
