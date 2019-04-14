@@ -53,45 +53,6 @@ public class UserTest {
         assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
         assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
         assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
-        assertEquals("peter.dewolf13@gmail.com", tester.getEmailAddress(), "peter.dewolf13@gmail.com");
     }
 
 }

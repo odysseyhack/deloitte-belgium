@@ -16,6 +16,21 @@ public class SmartcontractTest {
         assertEquals("test content, description of the smartcontract", testSmartContract.getContent());
         testSmartContract.setContent("new description");
         assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
+        assertEquals("new description", testSmartContract.getContent());
 
         assertNull(testSmartContract.getBlockAddress());
         assertEquals(testSmartContract.getId(),0);
