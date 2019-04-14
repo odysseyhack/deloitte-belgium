@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,9 +69,10 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     }
 
+    @Transactional
     @Override
     public <S extends Company> S save(S entity) {
-        return null;
+        return entityManager.merge(entity);
     }
 
     @Override

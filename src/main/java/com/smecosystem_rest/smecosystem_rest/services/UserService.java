@@ -3,7 +3,6 @@ package com.smecosystem_rest.smecosystem_rest.services;
 import com.smecosystem_rest.smecosystem_rest.model.Company;
 import com.smecosystem_rest.smecosystem_rest.model.User;
 import com.smecosystem_rest.smecosystem_rest.repositories.CompanyRepositoryImpl;
-import com.smecosystem_rest.smecosystem_rest.repositories.UserRepository;
 import com.smecosystem_rest.smecosystem_rest.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +33,23 @@ public class UserService {
         }
         else {
             return "User or wallet not found, please create a wallet first";
+        }
+    }
+
+    public com.smecosystem_rest.smecosystem_rest.model.transfer_objects.Credentials getCredentials(Long userId, String password) throws IOException, CipherException, IllegalAccessException {
+        Optional<User> user = userRepository.findById(userId);
+        if(user.isPresent()) {
+            User foundUser = user.get();
+            String walletAddress = foundUser.getWalletAddress();
+            Credentials credentials = WalletUtils.loadCredentials(password, User.getWalletPath() + "/" + foundUser.getWalletAddress());
+            com.smecosystem_rest.smecosystem_rest.model.transfer_objects.Credentials creds = new com.smecosystem_rest.smecosystem_rest.model.transfer_objects.Credentials();
+            creds.setAddress(credentials.getAddress());
+            creds.setPrivateKey(credentials.getEcKeyPair().getPrivateKey().toString(16));
+            creds.setPublicKey(credentials.getEcKeyPair().getPublicKey().toString(16));
+            return creds;
+        }
+        else {
+            throw new IllegalAccessException("User not found in the database");
         }
     }
 
