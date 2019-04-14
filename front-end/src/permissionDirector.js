@@ -11,12 +11,12 @@ class PermissionDirector extends Component {
   state = {
     owner: {
       name: 'Peter',
-      business: 'Deloitte',
-      location: 'Brussel',
+      business: 'De Suikerfabriek',
+      location: 'Groningen',
       function: 'Bedrijfsleider'
     },
     name: 'Kasper',
-    company: 'Deloitte',
+    company: 'De Suikerfabriek',
     role: 'Directeur',
     mainActivity: 'Evenementen',
     permissions: [
