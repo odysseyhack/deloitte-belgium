@@ -12,6 +12,7 @@ import org.web3j.crypto.WalletUtils;
 
 import javax.persistence.NoResultException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -90,10 +91,26 @@ public class UserService {
             User foundUser = user.get();
             Company foundCompany = company.get();
             foundUser.setCompany(foundCompany);
-            this.userRepository.save(foundUser);
+            this.save(foundUser);
             return this.userRepository.findById(user_id).get();
         }else {
             throw new IllegalAccessException("User or company not found in the system");
         }
+    }
+
+    public User save(User user) {
+        return this.userRepository.save(user);
+    }
+
+    public Optional<User> findById(Long userId) {
+        return this.userRepository.findById(userId);
+    }
+
+    public List<User> findAll() {
+       return this.userRepository.findAll();
+    }
+
+    public void delete(User user) {
+        this.userRepository.delete(user);
     }
 }
