@@ -37,7 +37,7 @@ class PermissionDirector extends Component {
         <img src={logo} className="profile__image" alt="logo" />
 
         <div className="permissionDirector__card">
-          <div>
+          <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
               {localized('name')}
             </span>
@@ -45,7 +45,7 @@ class PermissionDirector extends Component {
             {' '}
             {this.state.name}
           </div>
-          <div>
+          <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
               {localized('company')}
             </span>
@@ -53,7 +53,7 @@ class PermissionDirector extends Component {
             {' '}
             {this.state.name}
           </div>
-          <div>
+          <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
               {localized('role')}
             </span>
@@ -61,7 +61,7 @@ class PermissionDirector extends Component {
             {' '}
             {this.state.name}
           </div>
-          <div>
+          <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
               {localized('mainActivity')}
             </span>
@@ -69,7 +69,7 @@ class PermissionDirector extends Component {
             {' '}
             {this.state.name}
           </div>
-          <div>
+          <div className="permission__card--container">
             <span className="permission__card--title permission__card--name">
               {localized('permissions')}
             </span>
