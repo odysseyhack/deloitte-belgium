@@ -7,7 +7,9 @@ import CameraScreen from './cameraScreen'
 import Contracts from './contracts'
 import Contract from './contract'
 import Profile from './profile'
+import ProfileDirector from './profileDirector'
 import Permission from './permission'
+import PermissionDirector from './permissionDirector'
 
 class App extends Component {
   componentDidMount() {
@@ -29,11 +31,15 @@ class App extends Component {
         return <Contract />
       case '/profile':
         return <Profile />
+      case '/profile/1':
+        return <ProfileDirector />
       case '/permission':
         return <Permission />
+      case '/permission/1':
+        return <PermissionDirector />
       default:
-        break
-      // return <Error />
+        // return <Error />
+        return <LaunchScreen />
     }
   }
 
