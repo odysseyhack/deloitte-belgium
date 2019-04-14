@@ -60,4 +60,4 @@ const getRegisterDataForCity = (city) => {
   })
 }
 
-export default { login, getRegisterDataFor, getRegisterDataForCity }
+export default { login, sendPayment, getRegisterDataFor, getRegisterDataForCity }

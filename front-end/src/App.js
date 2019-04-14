@@ -7,6 +7,7 @@ import CameraScreen from './cameraScreen'
 import Contracts from './contracts'
 import Contract from './contract'
 import Profile from './profile'
+import ProfileDirector from './profileDirector'
 import Permission from './permission'
 
 class App extends Component {
@@ -29,6 +30,8 @@ class App extends Component {
         return <Contract />
       case '/profile':
         return <Profile />
+      case '/profile/1':
+        return <ProfileDirector />
       case '/permission':
         return <Permission />
       default:
